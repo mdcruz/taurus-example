@@ -1,0 +1,24 @@
+settings:
+  env:
+    BZT_TOKEN: ${BZT_TOKEN}
+
+execution:
+  - concurrency: 20
+    hold-for: 5m
+    ramp-up: 2m
+    scenario: blog
+  
+scenarios:
+  blog:
+    requests:
+    - https://www.mariedrake.com/
+
+reporting:
+  - module: final-stats
+  - module: blazemeter
+
+modules:
+  blazemeter:
+    project: Test project
+    report-name: Blog Load Test Results
+    token: ${BZT_TOKEN}
